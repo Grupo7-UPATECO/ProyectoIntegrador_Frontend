@@ -17,11 +17,28 @@
             <ul id="server-list"></ul>
             <button id="add-server">+ Agregar Servidor</button>
           </div>
-          
-          <div class="channels">
+          <!-- lista de canales -->
+          <!-- <div class="channels">
             <h3>Canales</h3>
             <ul id="channel-list"></ul>
             <button id="add-channel">+ Agregar Canal</button>
+          </div> -->
+          <!-- Columna de canales -->
+          <div class="canales">
+
+            <h3>Canales</h3>
+
+            <div id="lista-canales">
+              <!-- aquí se insertarán los canales --> 
+            </div>
+
+            <!-- Mensaje cuando no hay canales -->
+            <p id="sin-canales" class="hidden">
+              No hay canales en este servidor
+            </p>
+            
+            <button id="crear-canal">+ Crear Canal</button>
+
           </div>
           
         </div>
@@ -45,5 +62,7 @@
 
     <!-- Scripts -->
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/canal.js"></script>
+
 </body>
 </html>
