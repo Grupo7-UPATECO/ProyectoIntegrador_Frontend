@@ -8,32 +8,40 @@
 </head>
 <body>
     <!-- Lista de servidores -->
-    <div class="column">
-        <h2>Servidores</h2>
-        <ul id="data-list">
-            <!-- servidores del usuario -->
-        </ul>
-        <button id="create-server">Crear Servidor</button>
-    </div>
+    <div class="app">
 
-    <!-- Lista de canales -->
-    <div class="column">
-        <h2>Canales</h2>
-        <ul id="channel-list">
-            <!-- canales del servidor -->
-        </ul>
-        <button id="create-channel">Crear Canal</button>
-    </div>
-
-    <!-- Chat -->
-    <div class="column">
-        <h2>Chat</h2>
-        <div id="chat-messages">
-            <!-- mensajes del chat -->
+        <div class="sidebar">
+        
+          <div class="servers">
+            <h3>Servidores</h3>
+            <ul id="server-list"></ul>
+            <button id="add-server">+ Agregar Servidor</button>
+          </div>
+          
+          <div class="channels">
+            <h3>Canales</h3>
+            <ul id="channel-list"></ul>
+            <button id="add-channel">+ Agregar Canal</button>
+          </div>
+          
         </div>
-        <input type="text" id="message-input" placeholder="Escribe un mensaje">
-        <button id="send-message">Enviar</button>
-    </div>
+        
+        <div class="chat">
+        
+          <div class="chat-header">
+            <h4>#general</h4>
+          </div>
+          
+          <div id="messages" class="messages"></div>
+          
+          <form id="message-form">
+            <input type="text" placeholder="Escribe un mensaje">
+            <button type="submit">Enviar</button>  
+          </form>
+          
+        </div>
+        
+      </div>
 
     <!-- Scripts -->
     <script src="../scripts/script.js"></script>

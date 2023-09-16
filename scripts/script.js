@@ -1,29 +1,65 @@
-function loadData() {
-    fetch('http://127.0.0.1:5000/servidor/')
-        .then(response => {
+window.addEventListener("load", function () {
+    traer_servidores();
+});
+
+function traer_servidores() {
+    const url = "http://127.0.0.1:5000/servidor/";
+    fetch(url)
+        .then((response) => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error("Network response was not ok");
             }
             return response.json();
         })
-        .then(data => {
-            // Manipula los datos y muestra en la página
-            var dataList = document.getElementById('data-list');
-            
-            // Limpia los datos anteriores
-            dataList.innerHTML = '';
-
-            // Itera sobre los datos y crea elementos <li> para cada elemento
-            data.forEach(item => {
-                var listItem = document.createElement('li');
-                listItem.textContent = item[1]; // Accede al segundo elemento (en este caso, 'prueba')
+        .then((data) => {
+            const dataList = document.getElementById("server-list");
+            dataList.innerHTML = "";
+            data.forEach((item) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item.nombre_servidor;
                 dataList.appendChild(listItem);
             });
         })
-        .catch(error => {
-            console.error('Error:', error);
+        .catch((error) => {
+            console.error("Error:", error);
         });
 }
 
-// Llama a la función para cargar datos cuando se cargue la página
-loadData();
+
+
+const crearServidor = document.getElementById("crear_nuevo");
+
+crearServidor.addEventListener("submit", function (event) {
+    const url = "http://127.0.0.1:5000/servidor/";
+    event.preventDefault();
+
+    const nombreServidor = document.getElementById("nombre_servidor").value;
+    const idUsuario = document.getElementById("id_usuario").value;
+
+    const data = {
+        id_usuario: idUsuario,
+        nombre_servidor: nombreServidor,
+    };
+
+    console.log("enviando solicitud POST a:", url);
+    console.log("DATOS:", JSON.stringify(data));
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            traer_servidores();
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+});
