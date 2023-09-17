@@ -3,47 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discordio</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <title>Discordio</title>
 </head>
 <body>
-    <!-- Lista de servidores -->
-    <div class="app">
-
-        <div class="sidebar">
-        
-          <div class="servers">
-            <h3>Servidores</h3>
-            <ul id="server-list"></ul>
-            <button id="add-server">+ Agregar Servidor</button>
-          </div>
-          
-          <div class="channels">
-            <h3>Canales</h3>
-            <ul id="channel-list"></ul>
-            <button id="add-channel">+ Agregar Canal</button>
-          </div>
-          
+    <div class="container">
+        <div class="column" id="server-column">
+            <!-- Lista de servidores -->
+            <ul id="server-list">
+                <!-- Aquí se cargarán los servidores dinámicamente -->
+            </ul>
+            <button id="create-server">Crear Servidor</button>
         </div>
-        
-        <div class="chat">
-        
-          <div class="chat-header">
-            <h4>#general</h4>
-          </div>
-          
-          <div id="messages" class="messages"></div>
-          
-          <form id="message-form">
-            <input type="text" placeholder="Escribe un mensaje">
-            <button type="submit">Enviar</button>  
-          </form>
-          
+        <div class="column" id="channel-column">
+            <!-- nombre del servidor al que pertenece el canal -->
+            <h3 id="server-name"></h3>
+            <!-- Lista de canales -->
+            <ul id="channel-list">
+                <!-- Aquí se cargarán los canales del servidor seleccionado -->
+            </ul>
+            <button id="create-channel">Crear Canal</button>
         </div>
-        
-      </div>
-
-    <!-- Scripts -->
+        <div class="column" id="message-column">
+            <!-- Lista de mensajes -->
+            <ul id="message-list">
+                <!-- Aquí se cargarán los mensajes del canal seleccionado -->
+            </ul>
+            <input type="text" id="message-input" placeholder="Escribe un mensaje...">
+        </div>
+    </div>
+    <script src="../scripts/prueba.js"></script>
     <script src="../scripts/script.js"></script>
 </body>
 </html>

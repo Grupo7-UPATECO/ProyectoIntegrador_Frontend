@@ -1,86 +1,26 @@
-/* Estilos generales */
-
 body {
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .app {
-    display: flex;
-    height: 100%;
-  }
-  
-  /* Sidebar */
-  
-  .sidebar {
-    width: 300px;
-    border-right: 1px solid #ddd;
-  }
-  
-  .servers, 
-  .channels {
-    padding: 20px;
-  }
-  
-  .servers h3,
-  .channels h3 {
-    margin-bottom: 15px;
-  }
-  
-  .servers ul,
-  .channels ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar button {
-    width: 100%;
-    padding: 10px 0;
-    background: #006aff;
-    border: none;
-    color: white;
-    font-size: 16px;
-  }
-  
-  /* Chat */
-  
-  .chat {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .chat-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .messages {
-    flex: 1;
-    overflow: auto;
-    padding: 20px;
-  }
-  
-  #message-form {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
-  }
-  
-  #message-form input {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-  }
-  
-  #message-form button {
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px; 
-    background: #006aff;
-    color: white;
-    margin-left: 10px;
-  }
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 400px;
+  overflow-y: auto;
+}
+
+button {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
