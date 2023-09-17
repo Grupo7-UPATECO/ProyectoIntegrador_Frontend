@@ -53,6 +53,14 @@ function traer_canales(idServidor, nombreServidor) {
                 data.forEach((item) => {
                     const listItem = document.createElement("li");
                     listItem.textContent = item.nombre_canal;
+
+                    // Agregar evento click para mostrar los chats del canal
+                    listItem.addEventListener("click", function () {
+                        const idCanal = item.id_canal;
+                        const nombreCanal = item.nombre_canal; // Obtener el nombre del canal
+                        traer_chats(idCanal, nombreCanal); // Pasar el nombre del canal como argumento
+                    });
+
                     dataList.appendChild(listItem);
                 });
             } else {
@@ -65,7 +73,42 @@ function traer_canales(idServidor, nombreServidor) {
         });
 }
 
-function noHayCanales() {}
+function traer_chats(idCanal, nombreCanal) {
+    const url = `http://127.0.0.1:5000/chat/${idCanal}`;
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            const dataList = document.getElementById("chat-list");
+            dataList.innerHTML = "";
+
+            // Crear un elemento para mostrar el nombre del canal
+            const channelNameElement = document.createElement("h2");
+            channelNameElement.textContent = `Nombre del Canal: ${nombreCanal}`;
+
+            dataList.appendChild(channelNameElement);
+
+            if (data.length > 0) {
+                // Mostrar chats de este canal
+                data.forEach((item) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = item.chat;
+                    dataList.appendChild(listItem);
+                });
+            } else {
+                // Mostrar mensaje de no chats
+                noHayChats();
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
 
 /* const crearServidor = document.getElementById("crear_nuevo");
 
