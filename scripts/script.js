@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
     traer_servidores();
 });
+document.getElementById("create-server").addEventListener("click", crear_servidor);
 
 function traer_servidores() {
     const url = "http://127.0.0.1:5000/servidor/";
@@ -110,22 +111,13 @@ function traer_chats(idCanal, nombreCanal) {
         });
 }
 
-/* const crearServidor = document.getElementById("crear_nuevo");
-
-crearServidor.addEventListener("submit", function (event) {
+function crear_servidor() {
     const url = "http://127.0.0.1:5000/servidor/";
-    event.preventDefault();
+    const nombreServidor = document.getElementById("server-name").value;
+    //TODO 
+    const idUsuario = 1; // reemplazar 1 por el id del usuario actual obtenerIdUsuario()
+    const data = { nombre_servidor: nombreServidor, id_usuario: idUsuario };
 
-    const nombreServidor = document.getElementById("nombre_servidor").value;
-    const idUsuario = document.getElementById("id_usuario").value;
-
-    const data = {
-        id_usuario: idUsuario,
-        nombre_servidor: nombreServidor,
-    };
-
-    console.log("enviando solicitud POST a:", url);
-    console.log("DATOS:", JSON.stringify(data));
     fetch(url, {
         method: "POST",
         body: JSON.stringify(data),
@@ -140,10 +132,16 @@ crearServidor.addEventListener("submit", function (event) {
             return response.json();
         })
         .then((data) => {
+            console.log(data);
+            // Limpia el campo de entrada de nombre del servidor
+            document.getElementById("server-name").value = "";
+            // Actualizar la lista de servidores
             traer_servidores();
         })
         .catch((error) => {
             console.error("Error:", error);
         });
-});
- */
+}
+
+
+
