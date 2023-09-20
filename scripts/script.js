@@ -2,8 +2,12 @@ window.addEventListener("load", function () {
     traer_servidores();
 });
 
-document.getElementById("create-server").addEventListener("click", crear_servidor);
-document.getElementById("create-channel").addEventListener("click", crear_canal);
+document
+    .getElementById("create-server")
+    .addEventListener("click", crear_servidor);
+document
+    .getElementById("create-channel")
+    .addEventListener("click", crear_canal);
 
 let idServidorSeleccionado = null;
 
@@ -131,6 +135,40 @@ function crear_canal() {
             console.log(data);
             document.getElementById("channel-name").value = "";
             traer_canales(idServidor);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
+function traer_chats(idCanal, nombreCanal) {
+    const url = `http://127.0.0.1:5000/chat/${idCanal}`;
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            const dataList = document.getElementById("chat-list");
+            dataList.innerHTML = "";
+            // Crear un elemento para mostrar el nombre del canal
+            const channelNameElement = document.createElement("h2");
+            channelNameElement.textContent = `Nombre del Canal: ${nombreCanal}`;
+            dataList.appendChild(channelNameElement);
+            if (data.length > 0) {
+                // Mostrar chats de este canal
+                data.forEach((item) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = item.chat;
+                    dataList.appendChild(listItem);
+                });
+            } else {
+                // Mostrar mensaje de no chats
+                noHayChats();
+            }
         })
         .catch((error) => {
             console.error("Error:", error);
