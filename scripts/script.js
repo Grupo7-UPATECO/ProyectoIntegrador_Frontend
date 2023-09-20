@@ -172,6 +172,12 @@ function traer_chats(idCanal, nombreCanal) {
                 });
             } else {
                 // Mostrar mensaje de no chats
+                const dataList = document.getElementById("chat-list");
+                dataList.innerHTML = "";
+
+                const noChatsMessage = document.createElement("p");
+                noChatsMessage.textContent = "No hay chats disponibles en este canal.";
+                dataList.appendChild(noChatsMessage);
             }
         })
         .catch((error) => {
