@@ -69,7 +69,12 @@ function traer_canales(idServidor, nombreServidor) {
                     dataList.appendChild(listItem);
                 });
             } else {
-                noHayCanales();
+                const dataList = document.getElementById("channel-list");
+                    dataList.innerHTML = "";
+                
+                const noCanalesMessage = document.createElement("p");
+                noCanalesMessage.textContent = "No hay canales disponibles en este servidor.";
+                dataList.appendChild(noCanalesMessage);
             }
         })
         .catch((error) => {
@@ -167,7 +172,6 @@ function traer_chats(idCanal, nombreCanal) {
                 });
             } else {
                 // Mostrar mensaje de no chats
-                noHayChats();
             }
         })
         .catch((error) => {
