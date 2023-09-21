@@ -8,6 +8,7 @@ document
 document
     .getElementById("create-channel")
     .addEventListener("click", crear_canal);
+document.getElementById("create-chat").addEventListener("click", crear_chat);
 
 let idServidorSeleccionado = null;
 
@@ -65,15 +66,17 @@ function traer_canales(idServidor, nombreServidor) {
                         const idCanal = item.id_canal;
                         const nombreCanal = item.nombre_canal;
                         traer_chats(idCanal, nombreCanal);
+                        idCanalSeleccionado = idCanal;
                     });
                     dataList.appendChild(listItem);
                 });
             } else {
                 const dataList = document.getElementById("channel-list");
-                    dataList.innerHTML = "";
-                
+                dataList.innerHTML = "";
+
                 const noCanalesMessage = document.createElement("p");
-                noCanalesMessage.textContent = "No hay canales disponibles en este servidor.";
+                noCanalesMessage.textContent =
+                    "No hay canales disponibles en este servidor.";
                 dataList.appendChild(noCanalesMessage);
             }
         })
@@ -146,6 +149,42 @@ function crear_canal() {
         });
 }
 
+function crear_chat() {
+    // Verifica si se ha seleccionado un canal antes de crear un chat
+    if (idCanalSeleccionado === null) {
+        alert("Selecciona un canal antes de crear un chat.");
+        return;
+    }
+
+    const url = `http://127.0.0.1:5000/chat/${idCanalSeleccionado}`;
+    const chat = document.getElementById("chat-message").value;
+    const idCanal = idCanalSeleccionado;
+    const idUsuario = obtenerIdUsuario();
+    const data = { chat: chat, id_canal: idCanal, id_usuario: idUsuario };
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            document.getElementById("chat-message").value = "";
+            traer_chats(idCanal);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
 function traer_chats(idCanal, nombreCanal) {
     const url = `http://127.0.0.1:5000/chat/${idCanal}`;
     fetch(url)
@@ -176,7 +215,8 @@ function traer_chats(idCanal, nombreCanal) {
                 dataList.innerHTML = "";
 
                 const noChatsMessage = document.createElement("p");
-                noChatsMessage.textContent = "No hay chats disponibles en este canal.";
+                noChatsMessage.textContent =
+                    "No hay chats disponibles en este canal.";
                 dataList.appendChild(noChatsMessage);
             }
         })
@@ -184,7 +224,6 @@ function traer_chats(idCanal, nombreCanal) {
             console.error("Error:", error);
         });
 }
-
 // TODO Reemplazar esta función con la lógica adecuada para obtener el ID del usuario actual
 function obtenerIdUsuario() {
     return 1; // ID de ejemplo
