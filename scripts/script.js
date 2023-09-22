@@ -10,6 +10,13 @@ document
     .addEventListener("click", crear_canal);
 document.getElementById("create-chat").addEventListener("click", crear_chat);
 
+document
+    .getElementById("buscar-servidor-form")
+    .addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevenir la recarga de la página por defecto
+        buscarServidorPorNombre();
+    });
+
 let idServidorSeleccionado = null;
 
 function traer_servidores() {
@@ -224,6 +231,47 @@ function traer_chats(idCanal, nombreCanal) {
             console.error("Error:", error);
         });
 }
+
+function buscarServidorPorNombre() {
+    const nombreServidor = document.getElementById("server-search").value;
+
+    const url = `http://127.0.0.1:5000/servidor/buscar/${nombreServidor}`;
+
+    fetch(url)
+        .then((respuesta) => respuesta.json())
+        .then((data) => {
+            const resultados = document.getElementById("search-results");
+            resultados.innerHTML = "";
+
+            if (data) {
+                // Mostrar el servidor encontrado
+
+                const listItem = document.createElement("li");
+                listItem.textContent = data.nombre_servidor;
+
+                listItem.addEventListener("click", function () {
+                    // Al hacer clic en el servidor, se guarda su ID en la variable global
+                    idServidorSeleccionado = data.id_servidor;
+                    const nombreServidor = data.nombre_servidor;
+                    traer_canales(idServidorSeleccionado, nombreServidor);
+                });
+
+                // Agregar interactividad al item...
+
+                resultados.appendChild(listItem);
+            } else {
+                // Mostrar mensaje de no resultados
+                const mensaje = document.createElement("p");
+                mensaje.textContent = "No se encontraron servidores";
+                resultados.appendChild(mensaje);
+            }
+        })
+        .catch((error) => {
+            console.error("Error en la búsqueda", error);
+        });
+}
+
+
 // TODO Reemplazar esta función con la lógica adecuada para obtener el ID del usuario actual
 function obtenerIdUsuario() {
     return 1; // ID de ejemplo

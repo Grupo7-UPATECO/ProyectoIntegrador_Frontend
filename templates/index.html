@@ -9,6 +9,13 @@
 <body>
     <div class="container">
         <div class="column" id="server-column">
+            <h1>Buscador de Servidores</h1>
+            <form id="buscar-servidor-form">
+                <label for="server-search">Buscar servidor por nombre:</label>
+                <input type="text" id="server-search" name="server-search" required>
+                <button type="submit">Buscar</button>
+            </form>
+            <ul id="search-results"></ul>
             <!-- Lista de servidores -->
             <ul id="server-list">
                 <!-- Aquí se cargarán los servidores dinámicamente -->
