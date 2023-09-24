@@ -18,35 +18,66 @@ document
     });
 
 let idServidorSeleccionado = null;
+function nombreUsuarioLogueado() {
+    const url = "http://127.0.0.1:5000/usuario/perfil";
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json().then(data => {
+                return data.nombre_usuario; // Devolver el nombre de usuario
+            });
+        } else {
+            throw new Error("No se pudo obtener el nombre de usuario.");
+        }
+    })
+    .catch(error => {
+        throw new Error("Ocurrió un error al obtener el nombre de usuario.");
+    });
+}
 
 function traer_servidores() {
-    const url = "http://127.0.0.1:5000/servidor/";
-    fetch(url)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then((data) => {
-            const dataList = document.getElementById("server-list");
-            dataList.innerHTML = "";
-            data.forEach((item) => {
-                const listItem = document.createElement("li");
-                listItem.textContent = item.nombre_servidor;
-                listItem.addEventListener("click", function () {
-                    // Al hacer clic en el servidor, se guarda su ID en la variable global
-                    idServidorSeleccionado = item.id_servidor;
-                    const nombreServidor = item.nombre_servidor;
-                    traer_canales(idServidorSeleccionado, nombreServidor);
+    nombreUsuarioLogueado()
+    .then(nombreUsuario => {
+        console.log(nombreUsuario);
+        const url = `http://127.0.0.1:5000/servidor/${nombreUsuario}`;
+        console.log(url);
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const dataList = document.getElementById("server-list");
+                dataList.innerHTML = "";
+                data.forEach((item) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = item.nombre_servidor;
+                    listItem.addEventListener("click", function () {
+                        // Al hacer clic en el servidor, se guarda su ID en la variable global
+                        idServidorSeleccionado = item.id_servidor;
+                        const nombreServidor = item.nombre_servidor;
+                        traer_canales(idServidorSeleccionado, nombreServidor);
+                    });
+                    dataList.appendChild(listItem);
                 });
-                dataList.appendChild(listItem);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
             });
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
+    })
+    .catch(error => {
+        console.error(error);
+    });
 }
+
 
 function traer_canales(idServidor, nombreServidor) {
     const url = `http://127.0.0.1:5000/canal/${idServidor}`;
@@ -271,8 +302,3 @@ function buscarServidorPorNombre() {
         });
 }
 
-
-// TODO Reemplazar esta función con la lógica adecuada para obtener el ID del usuario actual
-function obtenerIdUsuario() {
-    return 1; // ID de ejemplo
-}
