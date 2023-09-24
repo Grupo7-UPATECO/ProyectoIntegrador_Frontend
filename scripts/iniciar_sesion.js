@@ -1,4 +1,4 @@
-function login() {
+/* function login() {
     const data = {
     nombre_usuario: document.getElementById("nombre_usuario").value,
     contrasena: document.getElementById("contrasena").value,
@@ -30,4 +30,4 @@ function login() {
    document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
     login();
-   });
+   }); */

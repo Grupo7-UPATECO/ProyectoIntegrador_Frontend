@@ -11,16 +11,26 @@
             <!--Formulario Login-->
         <div class="contenedor_login">
             <!--Login-->
-            <form action="" class="form_login" id="form_login">
+            <form action="" class="form_login" id="loginForm">
                 <h2>Iniciar Sección</h2><br>
-                <label for="">Usuario</label><br>
-                <input type="text" id="usuario" placeholder="Usuario" required ><br>
-                <label for="">Contraseña</label><br>
-                <input type="password" id="contrasena" placeholder="Contraseña" required ><br>
-                <button type="submit" id="btn_iniciar_seccion">Iniciar Sección</button><br>
+                <label for="nombre_usuario">Username:</label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" required>
+                <br>
+                <label for="contrasena">Password:</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+                <br>
+                <button type="submit">Login</button>
                 <p>¿No tienes una cuenta?<a href="register.html">Registrarse</a></p>
             </form>
     </main>
     <script src="../scripts/login_register.js"></script>
+    <script>
+        document
+    .getElementById("loginForm")
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+        login();
+    });
+    </script>
 </body>
 </html>
