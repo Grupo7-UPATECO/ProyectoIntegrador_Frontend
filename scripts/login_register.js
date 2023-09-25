@@ -14,7 +14,7 @@ function login() {
         .then((response) => {
             if (response.status === 200) {
                 return response.json().then((data) => {
-                    window.location.href = "perfil.html";
+                    window.location.href = "servidores.html";
                 });
             } else {
                 return response.json().then((data) => {
