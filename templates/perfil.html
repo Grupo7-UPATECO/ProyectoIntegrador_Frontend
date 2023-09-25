@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, 
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, 
 initial-scale=1.0">
- <title>Profile</title>
+   <title>Profile</title>
+   <link rel="stylesheet" href="/styles/reset.css">
+   <link rel="stylesheet" href="/styles/perfil.css">
 </head>
+
 <body>
- <div id="message">
- <h1>User Profile</h1>
- <p><strong>Username:</strong> <span id="nombre_usuario"></span></p>
- <p><strong>Email:</strong> <span id="email"></span></p>
- <p><strong>First Name:</strong> <span
-id="nombre"></span></p>
- <p><strong>Last Name:</strong> <span
-id="apellido"></span></p>
- </div>
- 
- <button id="logout">Logout</button>
- 
- <script src="../scripts/perfil.js"></script>
- <script src="../scripts/login_register.js"></script>
- <script>
-    document.getElementById("logout").addEventListener("click", logout)
- </script>
+   <main class="main">
+
+      <div id="message">
+         <h1>Mi perfil</h1>
+         <div class="box">
+         <p><strong>Nombre de Usuario:</strong> <span id="nombre_usuario"></span></p>
+         <p><strong>Email:</strong> <span id="email"></span></p>
+         <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+         <p><strong>Apellido:</strong> <span id="apellido"></span></p>
+         <button id="update">Editar perfil</button>
+         </div>
+      </div>
+
+      <button id="logout">Logout</button>
+   </main>
+   <script src="../scripts/perfil.js"></script>
+   <script src="../scripts/login_register.js"></script>
+   <script>
+      document.getElementById("logout").addEventListener("click", logout)
+   </script>
 </body>
+
 </html>
