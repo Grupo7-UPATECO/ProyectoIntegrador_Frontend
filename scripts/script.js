@@ -69,42 +69,48 @@ function obtenerIdUsuario() {
 function traer_servidores() {
     nombreUsuarioLogueado()
         .then((nombreUsuario) => {
-            console.log(nombreUsuario);
-            const url = `http://127.0.0.1:5000/servidor/${nombreUsuario}`;
-            console.log(url);
-            fetch(url)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    const dataList = document.getElementById("server-list");
-                    dataList.innerHTML = "";
-                    data.forEach((item) => {
-                        const listItem = document.createElement("li");
-                        listItem.textContent = item.nombre_servidor;
-                        listItem.addEventListener("click", function () {
-                            // Al hacer clic en el servidor, se guarda su ID en la variable global
-                            idServidorSeleccionado = item.id_servidor;
-                            const nombreServidor = item.nombre_servidor;
-                            traer_canales(
-                                idServidorSeleccionado,
-                                nombreServidor
-                            );
+            obtenerIdUsuario()
+                .then((idUsuario) => {
+                    const url = `http://127.0.0.1:5000/servidor/${nombreUsuario}`;
+                    console.log(url);
+                    fetch(url)
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error("Network response was not ok");
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            const dataList = document.getElementById("server-list");
+                            dataList.innerHTML = "";
+                            data.forEach((item) => {
+                                const listItem = document.createElement("li");
+                                listItem.textContent = `ID: ${idUsuario}, Servidor: ${item.nombre_servidor}`;
+                                listItem.addEventListener("click", function () {
+                                    // Al hacer clic en el servidor, se guarda su ID en la variable global
+                                    idServidorSeleccionado = item.id_servidor;
+                                    const nombreServidor = item.nombre_servidor;
+                                    traer_canales(
+                                        idServidorSeleccionado,
+                                        nombreServidor
+                                    );
+                                });
+                                dataList.appendChild(listItem);
+                            });
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
                         });
-                        dataList.appendChild(listItem);
-                    });
                 })
                 .catch((error) => {
-                    console.error("Error:", error);
+                    console.error(error);
                 });
         })
         .catch((error) => {
             console.error(error);
         });
 }
+
 
 function traer_canales(idServidor, nombreServidor) {
     const url = `http://127.0.0.1:5000/canal/${idServidor}`;
