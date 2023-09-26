@@ -18,6 +18,7 @@ document
     });
 
 let idServidorSeleccionado = null;
+let idCanalSeleccionado = null;
 function nombreUsuarioLogueado() {
     const url = "http://127.0.0.1:5000/usuario/perfil";
     return fetch(url, {
@@ -84,7 +85,7 @@ function traer_servidores() {
                     dataList.innerHTML = "";
                     nombreServidores.forEach((nombreServidor) => {
                         const listItem = document.createElement("li");
-                        listItem.textContent = `ID: ${idUsuario}, Servidor: ${nombreServidor}`;
+                        listItem.textContent = `Servidor: ${nombreServidor}`;
                         listItem.addEventListener("click", function () {
                             // Al hacer clic en el servidor, se guarda su ID en la variable global
                             idServidorSeleccionado = idUsuario;
@@ -228,30 +229,33 @@ function crear_chat() {
     const url = `http://127.0.0.1:5000/chat/${idCanalSeleccionado}`;
     const chat = document.getElementById("chat-message").value;
     const idCanal = idCanalSeleccionado;
-    const idUsuario = obtenerIdUsuario();
-    const data = { chat: chat, id_canal: idCanal, id_usuario: idUsuario };
 
-    fetch(url, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
+    // Obtén el ID de usuario de manera asíncrona
+    obtenerIdUsuario().then((idUsuario) => {
+        const data = { chat: chat, id_canal: idCanal, id_usuario: idUsuario };
+
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
         })
-        .then((data) => {
-            console.log(data);
-            document.getElementById("chat-message").value = "";
-            traer_chats(idCanal);
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                document.getElementById("chat-message").value = "";
+                traer_chats(idCanal);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    });
 }
 
 function traer_chats(idCanal, nombreCanal) {
