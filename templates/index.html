@@ -1,56 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
-    <title>Discordio</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-    <div class="container">
-        <div class="column" id="server-column">
-            <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
-            <h1>Buscador de Servidores</h1>
-            <form id="buscar-servidor-form">
-                <label for="server-search">Buscar servidor por nombre:</label>
-                <input type="text" id="server-search" name="server-search" required>
-                <button type="submit">Buscar</button>
-            </form>
-            <ul id="search-results"></ul>
-            <!-- Lista de servidores -->
-            <ul id="server-list">
-                <!-- Aquí se cargarán los servidores dinámicamente -->
+    <header>Discordio</header>
+    <main class="main">
+        <aside>
+            <h2>Discordio</h2>
+            <p>Unete al servidor que mas te interese</p>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, modi!</h3>
+            <ul>
+                <li class="link-item">
+                    <a href="/templates/login.html">Iniciar sesion</a>
+                </li>
+                <li class="link-item">
+                    <a href="/templates/register.html">Registrarme</a>
+                </li>
             </ul>
-            <input type="text" id="server-name" placeholder="Nombre del Servidor">
-            <button id="create-server">Crear Servidor</button>
+        </aside>
+        <article class="servers-art">
+            <h1>Discordio</h1>
+            <h2>Servidores disponibles</h2>
+            <section class="servers-seccion">
+            <div class="servers-cards" id="servers-cards"></div>
+            </section>
+        </article>
 
-        </div>
-        <div class="column" id="channel-column">
-            <!-- nombre del servidor al que pertenece el canal -->
-            <h3 id="server-name"></h3>
-            <!-- Lista de canales -->
-            <ul id="channel-list">
-                <!-- Aquí se cargarán los canales del servidor seleccionado -->
-            </ul>
-            <input type="text" id="channel-name" placeholder="Nombre del Canal">
-            <button id="create-channel">Crear Canal</button>
-        </div>
-        <div class="column" id="message-column">
-            <!-- Lista de mensajes -->
-            <ul id="chat-list">
-                <!-- Aquí se cargarán los mensajes del canal seleccionado -->
-            </ul>
-            <input type="text" id="chat-message" placeholder="Nombre del Canal">
-            <button id="create-chat">Crear Canal</button>
-        </div>
-    </div>
-    <script src="../scripts/prueba.js"></script>
-    <script src="../scripts/script.js"></script>
-    <script src="../scripts/login_register.js"></script>
-    <script src="../scripts/perfil.js"></script>
-    <script>
-        document.getElementById("nombre_usuario").innerText = data.
-    nombre_usuario;
-    </script>
+    </main>
+    <footer>Discordio - 2023 </footer>
+    <script src="/scripts/index.js"></script>
 </body>
 </html>
