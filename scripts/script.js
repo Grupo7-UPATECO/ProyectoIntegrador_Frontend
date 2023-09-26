@@ -79,19 +79,16 @@ function traer_servidores() {
                     return response.json();
                 })
                 .then((data) => {
-                    const nombreServidores = data.nombre_servidores; // Accedemos a la propiedad "nombre_servidores"
+                    const nombreServidores = data.nombre_servidores;
                     const dataList = document.getElementById("server-list");
                     dataList.innerHTML = "";
-                    nombreServidores.forEach((nombreServidor) => { // Iteramos sobre la lista de nombres
+                    nombreServidores.forEach((nombreServidor) => {
                         const listItem = document.createElement("li");
                         listItem.textContent = `ID: ${idUsuario}, Servidor: ${nombreServidor}`;
                         listItem.addEventListener("click", function () {
                             // Al hacer clic en el servidor, se guarda su ID en la variable global
-                            idServidorSeleccionado = nombreServidor; // Cambiar 'item.id_servidor' por 'nombreServidor'
-                            traer_canales(
-                                idServidorSeleccionado,
-                                nombreServidor
-                            );
+                            idServidorSeleccionado = idUsuario;
+                            traer_canales(idUsuario, nombreServidor);
                         });
                         dataList.appendChild(listItem);
                     });
@@ -104,6 +101,7 @@ function traer_servidores() {
             console.error(error);
         });
 }
+
 
 
 
@@ -320,7 +318,6 @@ function buscarServidorPorNombre() {
                     traer_canales(idServidorSeleccionado, nombreServidor);
                 });
 
-                // Agregar interactividad al item...
 
                 resultados.appendChild(listItem);
             } else {
