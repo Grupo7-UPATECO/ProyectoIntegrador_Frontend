@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/servidores.css">
     <title>Discordio</title>
 </head>
+
 <body>
     <header>
         <h1>D i s c o r d i o</h1>
@@ -14,41 +17,44 @@
             <button class="logout" onclick="logout()">Cerrar sesion</button>
         </div>
     </header>
-    <div class="container">
-        <div class="column" id="server-column">
-            <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
-            <h1>Buscador de Servidores</h1>
-            <form id="buscar-servidor-form">
-                <label for="server-search">Buscar servidor por nombre:</label>
-                <input type="text" id="server-search" name="server-search" required>
-                <button type="submit">Buscar</button>
-            </form>
-            <ul id="search-results"></ul>
-            <!-- Lista de servidores -->
-            <ul id="server-list">
-                <!-- Aquí se cargarán los servidores dinámicamente -->
-            </ul>
-            <input type="text" id="server-name" placeholder="Nombre del Servidor">
-            <button id="create-server">Crear Servidor</button>
+    <div class="servidores">
+        <div class="container">
+            <div class="column" id="server-column">
+                <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
+                <h1>Buscador de Servidores</h1>
+                <form id="buscar-servidor-form">
+                    <label for="server-search">Buscar servidor por nombre:</label>
+                    <input type="text" id="server-search" name="server-search" placeholder="Buscar"
+                        style="background-image: url('https://www.w3schools.com/css/searchicon.png');" required>
+                    <button type="submit">Buscar</button>
+                </form>
+                <ul id="search-results"></ul>
+                <!-- Lista de servidores -->
+                <ul id="server-list">
+                    <!-- Aquí se cargarán los servidores dinámicamente -->
+                </ul>
+                <input type="text" id="server-name" placeholder="Nombre del Servidor">
+                <button id="create-server">Crear Servidor</button>
 
-        </div>
-        <div class="column" id="channel-column">
-            <!-- nombre del servidor al que pertenece el canal -->
-            <h3 id="server-name"></h3>
-            <!-- Lista de canales -->
-            <ul id="channel-list">
-                <!-- Aquí se cargarán los canales del servidor seleccionado -->
-            </ul>
-            <input type="text" id="channel-name" placeholder="Nombre del Canal">
-            <button id="create-channel">Crear Canal</button>
-        </div>
-        <div class="column" id="message-column">
-            <!-- Lista de mensajes -->
-            <ul id="chat-list">
-                <!-- Aquí se cargarán los mensajes del canal seleccionado -->
-            </ul>
-            <input type="text" id="chat-message" placeholder="Nombre del Canal">
-            <button id="create-chat">Crear Chat</button>
+            </div>
+            <div class="column" id="channel-column">
+                <!-- nombre del servidor al que pertenece el canal -->
+                <h3 id="server-name"></h3>
+                <!-- Lista de canales -->
+                <ul id="channel-list">
+                    <!-- Aquí se cargarán los canales del servidor seleccionado -->
+                </ul>
+                <input type="text" id="channel-name" placeholder="Nombre del Canal">
+                <button id="create-channel">Crear Canal</button>
+            </div>
+            <div class="column" id="message-column">
+                <!-- Lista de mensajes -->
+                <ul id="chat-list">
+                    <!-- Aquí se cargarán los mensajes del canal seleccionado -->
+                </ul>
+                <input type="text" id="chat-message" placeholder="Nombre del Canal">
+                <button id="create-chat">Crear Chat</button>
+            </div>
         </div>
     </div>
     <footer>Discordio - 2023 </footer>
@@ -60,8 +66,9 @@
     </script>
     <script src="../scripts/perfil.js"></script>
     <script>
-        document.getElementById("nombre_usuario").innerText = data.
-    nombre_usuario;
+        document.getElementById( "nombre_usuario" ).innerText = data.
+            nombre_usuario;
     </script>
 </body>
+
 </html>
