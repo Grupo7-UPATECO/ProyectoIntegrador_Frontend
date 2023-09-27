@@ -1,9 +1,20 @@
 let arrayServers = []
+var popup_window = document.getElementById("popup")
+
+
 document.addEventListener("DOMContentLoaded", function(){
     traer_servidores();
+    popup_window.style.display = "none"
 })
 
-
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("pop-win")) {
+        mostrarPopup();
+    }
+    if (event.target.classList.contains("cerrar-popup")) {
+        cerrarPopup();
+    }
+});
 
 function traer_servidores() {
     
@@ -31,11 +42,24 @@ function displayServer() {
     arrayServers.forEach(server =>{
         let divServidor = document.createElement("div");
         let contentServidor =  ` 
-        <div>${server.nombre_servidor}</div>
+        <button class="pop-win">${server.nombre_servidor}</button>
         `
         divServidor.innerHTML = contentServidor;
         servidoresBox.appendChild(divServidor)
         divServidor.setAttribute("id", server.id_servidor)
         divServidor.classList.add("server")
+
     })
+}
+
+
+
+function mostrarPopup(){
+    popup_window = document.getElementById("popup")
+    popup_window.style.display = "flex"
+}
+
+function cerrarPopup() {
+    popup_window = document.getElementById("popup");
+    popup_window.style.display = "none";
 }
