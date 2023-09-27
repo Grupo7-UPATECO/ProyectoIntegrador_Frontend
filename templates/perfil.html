@@ -11,10 +11,17 @@ initial-scale=1.0">
 </head>
 
 <body>
+   <header>
+      <h1>D i s c o r d i o</h1>
+      <div class="opciones">
+          <a href="/templates/servidores.html">Volver atras</a>
+          <button class="logout" onclick="logout()">Cerrar sesion</button>
+      </div>
+   </header>
    <main class="main">
 
       <div id="message">
-         <h1>Mi perfil</h1>
+         <h2>Mi perfil</h2>
          <div class="box">
          <p><strong>Nombre de Usuario:</strong> <span id="nombre_usuario"></span></p>
          <p><strong>Email:</strong> <span id="email"></span></p>
@@ -24,13 +31,11 @@ initial-scale=1.0">
          </div>
       </div>
 
-      <button id="logout">Logout</button>
+      <!-- <button id="logout" >Logout</button> -->
    </main>
    <script src="../scripts/perfil.js"></script>
    <script src="../scripts/login_register.js"></script>
-   <script>
-      document.getElementById("logout").addEventListener("click", logout)
-   </script>
+
 </body>
 
 </html>
