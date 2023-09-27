@@ -1,26 +1,47 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+/* HEADER Y FOOTER */
 header, footer {
     text-align: center;
     padding: 1rem;
-    background-color:  rgb(43, 3, 54);
+    background-color:  rgb(90, 29, 108);
     color: #fff;
 }
 
 header {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
+
+header img {
+    /* border-radius: 50%; */
+    width: 10%;
+    height: 4em;
+}
+
+/* MAIN */
 
 .main {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
+    
 }
 
 .servers-art {
     background-color: rgb(31, 19, 34);
     color: #fff;
+    /* background: rgb(241,209,239); */
+    /* background: linear-gradient(100deg, rgba(241,209,239,1) 22%, rgba(52,17,61,1) 100%); */
+}
+
+.servers-art h2 {
+    text-align: center;
+    font-weight: 700;
 }
 
 article, aside {
@@ -29,7 +50,7 @@ article, aside {
 }
 
 aside {
-    background-color: rgb(209, 166, 246);
+    background-color: rgb(239, 208, 239);
 }
 
 
@@ -52,7 +73,9 @@ a {
 /* SECCION CON SERVIDORES */
 .servers-seccion {
     margin: 2rem;
+
 }
+
 
 .servers-cards {
     display: flex;
@@ -61,9 +84,61 @@ a {
     gap: 2rem;
 }
 
-.server {
+.server button {
     padding: 1rem;
     background-color: rgb(79, 45, 92);
     border-radius: 5px;
     box-shadow: 1px 1px 6px rgba(229, 224, 236, 0.767);
+    cursor: pointer;
+    color: #fff;
 }
+
+/* VENTANA POP UP */
+.popup {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(144,148, 150, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-popup {
+    width: 100%;
+    border-radius: 6px;
+    background-color: #FFF;
+    padding: 2rem;
+    max-width: 500px;
+}
+
+.contenido-popup h2{
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.contenido-popup p{
+    /* font-size: 18px; */
+    text-align: center;
+}
+
+.contenido-popup ul {
+    margin: 1.5rem ;
+}
+.contenido-popup label{
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 4px;
+    cursor: pointer;
+    color: rgb(56, 23, 87);
+    font-size: 500;
+}
+.contenido-popup .cerrar-popup:hover {
+    font-style:italic;
+}
+
+
+

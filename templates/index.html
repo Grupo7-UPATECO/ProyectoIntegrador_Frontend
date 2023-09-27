@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-    <header>Discordio</header>
+    <header>
+        <h1>D i s c o r d i o</h1>
+        <img src="/styles/img/discordio.jpg-HD.png" alt="imagen">
+        
+    </header>
     <main class="main">
         <aside>
             <h2>Discordio</h2>
@@ -24,13 +28,30 @@
             </ul>
         </aside>
         <article class="servers-art">
-            <h1>Discordio</h1>
             <h2>Servidores disponibles</h2>
             <section class="servers-seccion">
-            <div class="servers-cards" id="servers-cards"></div>
+            <div class="servers-cards" id="servers-cards">
+                <!-- <input type="checkbox" id="check-popup"> -->
+            </div>
             </section>
         </article>
-
+        <!-- pop up -->
+        
+        <div class="popup" id="popup">
+            <div class="contenido-popup">
+                <h2>¡Bienvenido!</h2>
+                <p>Inicia sesion o crea una cuenta para unirte a un servidor:</p>
+                <ul>
+                    <li class="link-item">
+                        <a href="/templates/login.html">Iniciar sesion</a>
+                    </li>
+                    <li class="link-item">
+                        <a href="/templates/register.html">Registrarme</a>
+                    </li>
+                </ul>
+                <label class="cerrar-popup">Cerrar</label>
+            </div>
+        </div>
     </main>
     <footer>Discordio - 2023 </footer>
     <script src="/scripts/index.js"></script>
