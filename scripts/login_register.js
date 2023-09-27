@@ -84,7 +84,7 @@ function logout() {
         .then((response) => {
             if (response.status === 200) {
                 return response.json().then((data) => {
-                    window.location.href = "login.html";
+                    window.location.href = "index.html";
                 });
             } else {
                 return response.json().then((data) => {
