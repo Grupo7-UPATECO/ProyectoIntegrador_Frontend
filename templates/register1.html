@@ -11,31 +11,17 @@
         <!--Formulario de Registro-->
         <div class="contenedor_register">  
             <!--Registro-->
-            <form action="" class="form_register" id="form-register">
+            <form action="" class="form_register" id="form_register">
                 <h2>Crear Cuenta</h2>
                 <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre Usuario" required ><br>
                 <input type="text" name="nombre" id="nombre" placeholder="Nombre" required ><br>
                 <input type="text" name="apellido" id="apellido" placeholder="Apellido" required ><br>
                 <input type="email" name="email" id="email" placeholder="Email" required ><br>
                 <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña"  required ><br>
-                <button type="button" onclick="register()" id="btn_registrar">Registrar</button>
-                <p class="warnings" id="wuarnings"></p>
-                <small class="error-text"></small>
-
+                <button type="button" id="btn_registrar">Registrarse</button> 
             </form>
         </div>
     </main>
     <script src="../scripts/login_register.js"></script>
-    <script src="../scripts/validarRegistro.js" ></script>
-    <script>
-        document.getElementById("btn_registrar");
-        btn_registrar.addEventListener("click", function(){
-            window.location.href = "login.html";
-        document.getElementById("warnings", function () {
-            showError()
-        }
-    
-});
-    </script>
 </body>
 </html>
