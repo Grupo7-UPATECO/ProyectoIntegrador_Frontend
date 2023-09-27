@@ -7,6 +7,13 @@
     <title>Discordio</title>
 </head>
 <body>
+    <header>
+        <h1>D i s c o r d i o</h1>
+        <div class="opciones">
+            <a href="/templates/perfil.html"> Mi perfil</a>
+            <button class="logout" onclick="logout()">Cerrar sesion</button>
+        </div>
+    </header>
     <div class="container">
         <div class="column" id="server-column">
             <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
@@ -44,9 +51,13 @@
             <button id="create-chat">Crear Canal</button>
         </div>
     </div>
+    <footer>Discordio - 2023 </footer>
     <script src="../scripts/prueba.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/login_register.js"></script>
+    <script>
+
+    </script>
     <script src="../scripts/perfil.js"></script>
     <script>
         document.getElementById("nombre_usuario").innerText = data.
