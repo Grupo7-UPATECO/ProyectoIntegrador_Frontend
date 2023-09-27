@@ -279,8 +279,19 @@ function traer_chats(idCanal, nombreCanal) {
                 // Mostrar chats de este canal
                 data.forEach((item) => {
                     const listItem = document.createElement("li");
-                    listItem.textContent = item.chat;
-                    dataList.appendChild(listItem);
+                    listItem.setAttribute("id", item.id_chat)
+                    let fecha = new Date(item.fecha_creacion);
+                    fecha = fecha.toLocaleDateString()
+                    listItem.innerHTML = `
+                    <div class="li-usuario-fecha">
+                    <p class="usuario">${item.nombre_usuario}</p>
+                    <p class="fecha">${fecha}</p>
+                    </div>
+                    <p>${item.chat}</p>
+                    `;
+                    listItem.style.backgroundColor = moradoAleatorio();
+                    dataList.appendChild(listItem)
+                    
                 });
             } else {
                 // Mostrar mensaje de no chats
@@ -334,4 +345,12 @@ function buscarServidorPorNombre() {
         .catch((error) => {
             console.error("Error:", error);
         });
+}
+
+function moradoAleatorio(){
+    
+    let morado = Math.random() * 30 +260;
+    let sombrasMorado = `hsl(${morado}, 100%, 35%)`
+    return sombrasMorado
+
 }
