@@ -97,3 +97,6 @@ main {
     font-size: 15px;
     margin: 1px 0px;
 }
+.errorField {
+    border:  1px solid firebrickS;
+}

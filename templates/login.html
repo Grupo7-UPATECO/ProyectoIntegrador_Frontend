@@ -19,11 +19,12 @@
                 <label for="contrasena">Password:</label>
                 <input type="password" id="contrasena" name="contrasena" required>
                 <br>
-                <button type="submit">Login</button>
+                <button type="submit" onclick="login()" id="btn_login">Login</button>
                 <p>¿No tienes una cuenta?<a href="register.html">Registrarse</a></p>
             </form>
     </main>
     <script src="../scripts/login_register.js"></script>
+    <script src="../scripts/validarLoginReg.js" ></script>
     <script>
         document
     .getElementById("loginForm")
