@@ -13,14 +13,14 @@ body {
   gap: 2rem;
 }
 
-.column {
+/* .column {
   /* flex: 1; */
   /* padding: 10px;
   border: 1px solid #ccc;
   height: 400px; */
-  /* overflow-y: auto; */
+  /* overflow-y: auto;
  
-}
+} */
 
 button {
   display: inline-block;
