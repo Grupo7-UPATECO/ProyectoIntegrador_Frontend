@@ -80,16 +80,19 @@ function traer_servidores() {
                     return response.json();
                 })
                 .then((data) => {
-                    const nombreServidores = data.nombre_servidores;
+                    const servidores = data.nombre_servidores;
+                    console.log(servidores)
                     const dataList = document.getElementById("server-list");
                     dataList.innerHTML = "";
-                    nombreServidores.forEach((nombreServidor) => {
+                    servidores.forEach((servidor) => {
                         const listItem = document.createElement("li");
-                        listItem.textContent = ` ${nombreServidor}`;
+                        listItem.textContent = ` ${servidor[1]}`;
                         listItem.addEventListener("click", function () {
                             // Al hacer clic en el servidor, se guarda su ID en la variable global
-                            idServidorSeleccionado = idUsuario;
-                            traer_canales(idUsuario, nombreServidor);
+                            // idServidorSeleccionado = idUsuario;
+                            idServidorSeleccionado = servidor[0]
+                            nombreServidor = servidor[1]
+                            traer_canales(idServidorSeleccionado, nombreServidor);
                         });
                         dataList.appendChild(listItem);
                     });
