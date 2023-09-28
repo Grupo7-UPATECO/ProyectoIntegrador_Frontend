@@ -85,7 +85,7 @@ function traer_servidores() {
                     dataList.innerHTML = "";
                     nombreServidores.forEach((nombreServidor) => {
                         const listItem = document.createElement("li");
-                        listItem.textContent = `Servidor: ${nombreServidor}`;
+                        listItem.textContent = ` ${nombreServidor}`;
                         listItem.addEventListener("click", function () {
                             // Al hacer clic en el servidor, se guarda su ID en la variable global
                             idServidorSeleccionado = idUsuario;
@@ -121,7 +121,7 @@ function traer_canales(idServidor, nombreServidor) {
             dataList.innerHTML = "";
 
             const serverNameElement = document.createElement("h2");
-            serverNameElement.textContent = `Nombre del Servidor: ${nombreServidor}`;
+            serverNameElement.textContent = `Canales del servidor ${nombreServidor}`;
             dataList.appendChild(serverNameElement);
 
             if (data.length > 0) {
@@ -273,7 +273,7 @@ function traer_chats(idCanal, nombreCanal) {
             dataList.innerHTML = "";
             // Crear un elemento para mostrar el nombre del canal
             const channelNameElement = document.createElement("h2");
-            channelNameElement.textContent = `Nombre del Canal: ${nombreCanal}`;
+            channelNameElement.textContent = `Chats del canal ${nombreCanal}`;
             dataList.appendChild(channelNameElement);
             if (data.length > 0) {
                 // Mostrar chats de este canal
@@ -287,9 +287,9 @@ function traer_chats(idCanal, nombreCanal) {
                     <p class="usuario">${item.nombre_usuario}</p>
                     <p class="fecha">${fecha}</p>
                     </div>
-                    <p>${item.chat}</p>
+                    <p class="li-chat">${item.chat}</p>
                     `;
-                    listItem.style.backgroundColor = moradoAleatorio();
+                    // listItem.style.borderColor = moradoAleatorio();
                     dataList.appendChild(listItem)
                     
                 });
@@ -347,10 +347,10 @@ function buscarServidorPorNombre() {
         });
 }
 
-function moradoAleatorio(){
+// function moradoAleatorio(){
     
-    let morado = Math.random() * 30 +260;
-    let sombrasMorado = `hsl(${morado}, 100%, 35%)`
-    return sombrasMorado
+//     let morado = Math.random() * 30 +260;
+//     let sombrasMorado = `hsl(${morado}, 100%, 30%)`
+//     return sombrasMorado
 
-}
+// }

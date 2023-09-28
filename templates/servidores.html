@@ -17,19 +17,22 @@
             <button class="logout" onclick="logout()">Cerrar sesion</button>
         </div>
     </header>
+    <div class="search-bar">
+        <!-- <h1>Buscador de Servidores</h1> -->
+        <form id="buscar-servidor-form">
+            <!-- <label for="server-search">Buscar servidor por nombre:</label> -->
+            <input type="text" id="server-search" name="server-search" placeholder="Buscar servidor por nombre"
+                style="background-image: url('https://www.w3schools.com/css/searchicon.png');" required>
+            <button type="submit">Buscar</button>
+        </form>
+        <ul id="search-results"></ul>
+                <!-- Lista de servidores -->
+    </div>
     <div class="servidores">
         <div class="container">
             <div class="column" id="server-column">
                 <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
-                <h1>Buscador de Servidores</h1>
-                <form id="buscar-servidor-form">
-                    <label for="server-search">Buscar servidor por nombre:</label>
-                    <input type="text" id="server-search" name="server-search" placeholder="Buscar"
-                        style="background-image: url('https://www.w3schools.com/css/searchicon.png');" required>
-                    <button type="submit">Buscar</button>
-                </form>
-                <ul id="search-results"></ul>
-                <!-- Lista de servidores -->
+                <h2>Mis servidores:</h2>
                 <ul id="server-list">
                     <!-- Aquí se cargarán los servidores dinámicamente -->
                 </ul>
@@ -52,8 +55,11 @@
                 <ul id="chat-list">
                     <!-- Aquí se cargarán los mensajes del canal seleccionado -->
                 </ul>
-                <input type="text" id="chat-message" placeholder="Nombre del Canal">
-                <button id="create-chat">Crear Chat</button>
+                <div class="send-msg">
+                    <input type="text" id="chat-message" placeholder="Nombre del Canal">
+                    <button id="create-chat">Crear Chat</button>
+                </div>
+
             </div>
         </div>
     </div>
