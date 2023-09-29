@@ -86,3 +86,12 @@ header > h1 {
 .opciones a:hover, .logout:hover{
     color:rgb(224, 183, 229);
 }
+
+#update, #cancelar {
+    background-color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+}

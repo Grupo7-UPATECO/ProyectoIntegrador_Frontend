@@ -92,6 +92,11 @@
     padding: 10px;
     margin: 10px;
     transition: all 0.5s;
+    color: rgb(67, 61, 61);
+}
+
+#chat-list li:hover{
+    color: #fff;
 }
 
 .li-usuario-fecha {
@@ -146,4 +151,3 @@ li {
     display: grid;
     place-items: center;
 }
-
