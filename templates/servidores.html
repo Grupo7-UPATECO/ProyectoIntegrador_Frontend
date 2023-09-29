@@ -18,6 +18,8 @@
         </div>
     </header>
     <div class="search-bar">
+        <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
+
         <!-- <h1>Buscador de Servidores</h1> -->
         <form id="buscar-servidor-form">
             <!-- <label for="server-search">Buscar servidor por nombre:</label> -->
@@ -31,7 +33,6 @@
     <div class="servidores">
         <div class="container">
             <div class="column" id="server-column">
-                <p><span>Bienvenido/a </span><span id="nombre_usuario"></span></p>
                 <h2>Mis servidores:</h2>
                 <ul id="server-list">
                     <!-- Aquí se cargarán los servidores dinámicamente -->
@@ -56,7 +57,7 @@
                     <!-- Aquí se cargarán los mensajes del canal seleccionado -->
                 </ul>
                 <div class="send-msg">
-                    <input type="text" id="chat-message" placeholder="Nombre del Canal">
+                    <input type="text" id="chat-message" placeholder="Escribe tu mensaje">
                     <button id="create-chat">Crear Chat</button>
                 </div>
 

@@ -292,7 +292,7 @@ function traer_chats(idCanal, nombreCanal) {
                     </div>
                     <p class="li-chat">${item.chat}</p>
                     `;
-                    // listItem.style.borderColor = moradoAleatorio();
+                    listItem.style.backgroundColor = moradoAleatorio();
                     dataList.appendChild(listItem)
                     
                 });
@@ -350,10 +350,10 @@ function buscarServidorPorNombre() {
         });
 }
 
-// function moradoAleatorio(){
+function moradoAleatorio(){
     
-//     let morado = Math.random() * 30 +260;
-//     let sombrasMorado = `hsl(${morado}, 100%, 30%)`
-//     return sombrasMorado
+    let morado = Math.random() * 50 +270;
+    let sombrasMorado = `hsl(${morado}, 30%, 70%)`
+    return sombrasMorado
 
-// }
+}

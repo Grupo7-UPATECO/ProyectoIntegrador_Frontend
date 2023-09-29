@@ -130,21 +130,29 @@ function guardar() {
                     emailElement.parentNode.replaceChild(emailElement, emailElement);
                     nombreElement.parentNode.replaceChild(nombreElement, nombreElement);
                     apellidoElement.parentNode.replaceChild(apellidoElement, apellidoElement);
-
+                
 
                     document.getElementById("update").textContent = "Editar perfil";
                     var cancelBtn = document.getElementById("cancelar");
                     if (cancelBtn) {
                         cancelBtn.parentNode.removeChild(cancelBtn);
                     }
+
+                    document.getElementById("response").innerHTML = data.message;
+                    document.getElementById("response").style.display = "block"
+
+                    setTimeout(() => {
+                        document.getElementById("response").style.display = "none"
+                    }, 3000);
+                    
                 });
             } else {
                 return response.json().then(data => {
-                    document.getElementById("message").innerHTML = data.message;
+                    document.getElementById("response").innerHTML = data.response;
                 });
             }
         })
         .catch(error => {
-            document.getElementById("message").innerHTML = "Aocurrio un error.";
+            document.getElementById("message").innerHTML = "Ocurrio un error.";
         });
 }
